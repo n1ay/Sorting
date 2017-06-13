@@ -17,15 +17,19 @@ public class MainApp {
           else return -1;
         };
 
-        Integer[] array = initIntArray(30000);
+        Integer[] array = initIntArray(3000000);
         SortTimer<Integer> sortTimer = new SortTimer<>();
         //printArray(array);
-        sortTimer.measure(new BubbleSort<>(), array, integerComparator);
+
+        /*sortTimer.measure(new BubbleSort<>(), array, integerComparator);
         sortTimer.measure(new SelectionSort<>(), array, integerComparator);
         sortTimer.measure(new InsertionSort<>(), array, integerComparator);
         sortTimer.measure(new MergeSort<>(), array, integerComparator);
-        sortTimer.measure(new QuickSort<>(), array, integerComparator);
-        sortTimer.measure(new HeapSort<>(), array, integerComparator);
+        */sortTimer.measure(new QuickSort<>(), array, integerComparator);
+        //sortTimer.measure(new HeapSort<>(), array, integerComparator);
+        //sortTimer.measure(new CountingSort<>(), array, integerComparator);
+        sortTimer.measure(new IterativeQuickSort<>(), array, integerComparator);
+        sortTimer.measure(new IterativeMergeSort<>(), array, integerComparator);
     }
 
     public static Integer[] initIntArray(int length) {

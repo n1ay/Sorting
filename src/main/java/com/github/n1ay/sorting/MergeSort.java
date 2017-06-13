@@ -15,20 +15,21 @@ public class MergeSort<T> implements Sorter<T> {
     @Override
     public T[] sort(T[] array, Comparator<T> comparator) {
         this.comparator = comparator;
+        T[] result = Arrays.copyOf(array, array.length);
         Vector<T[]> vec, vec2 = new Vector<>(2);
-        if(array.length > 2) {
-            vec = divide(array);
+        if(result.length > 2) {
+            vec = divide(result);
             T[] arr1 = sort(vec.elementAt(0), comparator);
             T[] arr2 = sort(vec.elementAt(1), comparator);
             return merge(arr1, arr2);
-        } else if (array.length == 2) {
-            if (comparator.compare(array[0], array[1]) > 0) {
-                T tmp = array[0];
-                array[0] = array[1];
-                array[1] = tmp;
+        } else if (result.length == 2) {
+            if (comparator.compare(result[0], result[1]) > 0) {
+                T tmp = result[0];
+                result[0] = result[1];
+                result[1] = tmp;
             }
         }
-        return array;
+        return result;
     }
 
     private Vector<T[]> divide(T[] array) {
